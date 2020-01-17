@@ -30,10 +30,13 @@ describe("TodoController.createTodo", () => {
 		expect(TotoModel.create).toBeCalled();
 	});
 	
-	it("should return 200 response code", () => {
+	it("should return 200 response code", (done) => {
 		TodoController.createTodo(req, res, next);
-		expect(res.statusCode).toBe(200);
-		expect(res._isEndCalled()).toBeTruthy();
+		function callback() {
+			expect(res.statusCode).toBe(200);
+			expect(res._isEndCalled()).toBeTruthy();
+			done();
+		}
 	});
 	
 	it("should return json body in response", () => {

@@ -12,13 +12,13 @@ describe(endPointUrl, () => {
 			.send(newTodo)
 			.end((err, data) => {
 				if (err) {
-					callback(err, null);
+					callback( null);
 				} else {
-					callback(null, data);
+					callback(data);
 				}
 			});
 		
-		function callback(err, response) {
+		function callback(response) {
 			expect(response.statusCode).toBe(200);
 			expect(response.data.title).toBe(newTodo.title);
 			expect(response.data.done).toBe(newTodo.done);
