@@ -6,22 +6,23 @@ const endPointUrl = "/todos/";
 
 describe(endPointUrl, () => {
 	
-	it(`POST ${endPointUrl}`, () => {
+	it(`POST ${endPointUrl}`, (done) => {
 		request(app)
 			.post(endPointUrl)
 			.send(newTodo)
 			.end((err, data) => {
 				if (err) {
-					done(err, null);
+					callback(err, null);
 				} else {
-					done(null, data);
+					callback(null, data);
 				}
 			});
 		
-		function done(err, response) {
+		function callback(err, response) {
 			expect(response.statusCode).toBe(200);
 			expect(response.data.title).toBe(newTodo.title);
 			expect(response.data.done).toBe(newTodo.done);
+			done();
 		}
 	});
 	
