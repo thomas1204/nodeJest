@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d7bd7de-e00f-44df-a608-ebd8ec35371c" name="Default Changelist" comment="">
+    <list default="true" id="9d7bd7de-e00f-44df-a608-ebd8ec35371c" name="Default Changelist" comment="`node-http-mocks` package added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/todo.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/todo.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/todo.controller.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/todo.controller.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +30,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -44,7 +42,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -68,22 +66,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579276291813</updated>
-      <workItem from="1579276294594" duration="3045000" />
+      <workItem from="1579276294594" duration="5687000" />
     </task>
+    <task id="LOCAL-00001" summary="`node-http-mocks` package added">
+      <created>1579281720505</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579281720505</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="`node-http-mocks` package added" />
+    <option name="LAST_COMMIT_MESSAGE" value="`node-http-mocks` package added" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="108" key="CommitChangelistDialog2" timestamp="1579281687029">
+    <state x="338" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579282040954">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="463" y="108" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1579281687029" />
-    <state x="375" y="145" key="SettingsEditor" timestamp="1579278035293">
+    <state x="338" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1579282040954" />
+    <state x="704" y="228" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog" timestamp="1579282282341">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="375" y="145" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1579278035293" />
+    <state x="704" y="228" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1579282282341" />
+    <state x="463" y="108" key="CommitChangelistDialog2" timestamp="1579281771868">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="463" y="108" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1579281771868" />
+    <state x="375" y="145" key="SettingsEditor" timestamp="1579282303770">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="375" y="145" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1579282303770" />
+    <state x="473" y="246" key="Vcs.Push.Dialog.v2" timestamp="1579281854628">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="473" y="246" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1579281854628" />
+    <state x="661" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579281835176">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="661" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1579281835176" />
     <state x="538" y="235" width="670" height="676" key="search.everywhere.popup" timestamp="1579278529700">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
