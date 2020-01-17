@@ -4,6 +4,7 @@
     <list default="true" id="9d7bd7de-e00f-44df-a608-ebd8ec35371c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/todo.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/todo.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/todo.controller.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/todo.controller.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -67,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579276291813</updated>
-      <workItem from="1579276294594" duration="2647000" />
+      <workItem from="1579276294594" duration="3045000" />
     </task>
     <servers />
   </component>
@@ -75,6 +76,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="463" y="108" key="CommitChangelistDialog2" timestamp="1579281687029">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="463" y="108" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1579281687029" />
     <state x="375" y="145" key="SettingsEditor" timestamp="1579278035293">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
