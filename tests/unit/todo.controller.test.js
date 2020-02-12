@@ -30,19 +30,18 @@ describe("TodoController.createTodo", () => {
 		expect(TotoModel.create).toBeCalled();
 	});
 	
-	it("should return 200 response code", (done) => {
-		TodoController.createTodo(req, res, next);
-		function callback() {
+	it("should return 200 response code",   () => {
+		TodoController.createTodo(req, res, ()=>{
 			expect(res.statusCode).toBe(200);
 			expect(res._isEndCalled()).toBeTruthy();
-			done();
-		}
+		});
 	});
 	
 	it("should return json body in response", () => {
 		TotoModel.create.mockReturnValue(newTodo);
-		TodoController.createTodo(req, res, next);
-		expect(res._getJSONData()).toStrictEqual(newTodo);
+		TodoController.createTodo(req, res, () => {
+			expect(res._getJSONData()).toStrictEqual(newTodo);
+		});
 	});
 	
 });

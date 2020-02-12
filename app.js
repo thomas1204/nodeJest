@@ -1,20 +1,14 @@
 const express = require('express');
 const todoRoutes = require('./routes/todo.routes');
-const mongoose = require('mongoose');
+const database = require('./database');
 const app = express();
 
 
 /**
  * MongoDb connection
  */
-const dbUrl = 'mongodb+srv://shayamthomas:bleedblood@loree-76xnb.mongodb.net/todo?retryWrites=true&w=majority';
-mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
-	if (err) {
-		console.log("MongoDB connection error", err);
-	} else {
-		console.log('MongoDb connected successfully');
-	}
-});
+database.connect();
+
 
 /**
  * Express configuration
