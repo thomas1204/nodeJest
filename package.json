@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --detectOpenHandles --watchAll",
+    "server": "node server.js"
   },
   "author": "",
   "license": "ISC",

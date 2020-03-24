@@ -25,12 +25,4 @@ app.get('/', (req, res) => {
 });
 
 
-/**
- * Listening to port
- */
-// app.listen(3000, () => {
-// 	console.log('Server running');
-// });
-
-
 module.exports = app;

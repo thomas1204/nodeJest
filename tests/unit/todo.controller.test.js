@@ -26,12 +26,12 @@ describe("TodoController.createTodo", () => {
 	});
 	
 	it('should call TodoModel.create', () => {
-		TodoController.createTodo(req, res, next);
+		TodoController.createTodo(req, res);
 		expect(TotoModel.create).toBeCalled();
 	});
 	
-	it("should return 200 response code",   () => {
-		TodoController.createTodo(req, res, ()=>{
+	it("should return 200 response code", () => {
+		TodoController.createTodo(req, res, () => {
 			expect(res.statusCode).toBe(200);
 			expect(res._isEndCalled()).toBeTruthy();
 		});
@@ -40,8 +40,20 @@ describe("TodoController.createTodo", () => {
 	it("should return json body in response", () => {
 		TotoModel.create.mockReturnValue(newTodo);
 		TodoController.createTodo(req, res, () => {
+			expect(res.statusCode).toBe(200);
 			expect(res._getJSONData()).toStrictEqual(newTodo);
 		});
 	});
+	
+	it("Should handle if input value for `title` is missing", () => {
+		delete req.body.title;
+		const errorMessage = {message : "Title parameter is missing "};
+		const rejectedPromise = Promise.reject(errorMessage);
+		TotoModel.create.mockReturnValue(rejectedPromise);
+		TodoController.createTodo(req, res, () => {
+			expect(res.statusCode).toBe(400);
+			expect(res._getJSONData()).toStrictEqual(errorMessage);
+		});
+	})
 	
 });
