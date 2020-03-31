@@ -11,6 +11,6 @@ exports.createTodo = (req, res) => {
 			res.status(200).json(doc);
 		});
 	} else {
-		res.status(500).end();
+		res.status(500).send({error: 'Some parameters are missing'})
 	}
 };
