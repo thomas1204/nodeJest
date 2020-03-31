@@ -1,8 +1,9 @@
 const request = require('supertest');
 const app = require('../../app');
 const newTodo = require('../mock/newTodo');
-const endPointUrl = "/todos/";
 
+
+const endPointUrl = "/todos/"; // APP URL
 
 describe(endPointUrl, () => {
 	

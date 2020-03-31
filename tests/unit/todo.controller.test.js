@@ -1,11 +1,9 @@
 const TodoController = require('../../controllers/todo.controller');
 const TotoModel = require('../../model/todo.model');
-const httpMocks = require('node-mocks-http');
+const httpMocks = require('node-mocks-http'); // mock http library
 const newTodo = require('../mock/newTodo');
 
-
 TotoModel.create = jest.fn();
-
 
 let req, res, next;
 beforeEach(() => {
@@ -45,14 +43,10 @@ describe("TodoController.createTodo", () => {
 		});
 	});
 	
-	it("Should handle if input value for `title` is missing", () => {
+	it("Should return with statusCode 500 when parameters are missing", () => {
 		delete req.body.title;
-		const errorMessage = {message : "Title parameter is missing "};
-		const rejectedPromise = Promise.reject(errorMessage);
-		TotoModel.create.mockReturnValue(rejectedPromise);
 		TodoController.createTodo(req, res, () => {
-			expect(res.statusCode).toBe(400);
-			expect(res._getJSONData()).toStrictEqual(errorMessage);
+			expect(res.statusCode).toBe(500);
 		});
 	})
 	

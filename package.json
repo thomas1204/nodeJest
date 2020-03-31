@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --watchAll",
+    "test": "jest --watchAll",
     "server": "node server.js"
   },
   "author": "",
