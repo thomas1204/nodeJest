@@ -15,7 +15,6 @@ exports.createTodo = (req, res) => {
 	}
 };
 
-
 exports.getTodos = (req, res) => {
 	TodoModel.find({}, (err, docs) => {
 	
