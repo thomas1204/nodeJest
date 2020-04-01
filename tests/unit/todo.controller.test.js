@@ -4,6 +4,7 @@ const httpMocks = require('node-mocks-http'); // mock http library
 const newTodo = require('../mock/newTodo');
 
 TotoModel.create = jest.fn();
+TotoModel.find = jest.fn();
 
 let req, res, next;
 beforeEach(() => {
@@ -19,7 +20,7 @@ describe("TodoController.createTodo", () => {
 		req.body = newTodo;
 	});
 	
-	it("should have a create todo function", () => {
+	it("should have a createTodo function", () => {
 		expect(typeof TodoController.createTodo).toBe("function");
 	});
 	
@@ -29,10 +30,9 @@ describe("TodoController.createTodo", () => {
 	});
 	
 	it("should return 200 response code", () => {
-		TodoController.createTodo(req, res, () => {
-			expect(res.statusCode).toBe(200);
-			expect(res._isEndCalled()).toBeTruthy();
-		});
+		TodoController.createTodo(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._isEndCalled()).toBeTruthy();
 	});
 	
 	it("should return json body in response", () => {
@@ -49,5 +49,27 @@ describe("TodoController.createTodo", () => {
 			expect(res.statusCode).toBe(500);
 		});
 	})
+	
+});
+
+
+describe('TodoController.getTodos', () => {
+	
+	it("should have a getTodos function", () => {
+		expect(typeof TodoController.getTodos).toBe("function");
+	});
+	
+	it('should call TodoModel.find', () => {
+		TodoController.getTodos(req, res, () => {
+			expect(TotoModel.find).toBeCalled();
+		});
+	});
+	
+	it("should return 200 response code", () => {
+		TodoController.getTodos(req, res, () => {
+			expect(res.statusCode).toBe(200);
+			expect(res._isEndCalled()).toBeTruthy();
+		});
+	});
 	
 });

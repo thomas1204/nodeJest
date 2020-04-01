@@ -14,3 +14,10 @@ exports.createTodo = (req, res) => {
 		res.status(500).send({error: 'Some parameters are missing'})
 	}
 };
+
+
+exports.getTodos = (req, res) => {
+	TodoModel.find({}, (err, docs) => {
+	
+	})
+};
