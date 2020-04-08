@@ -2,6 +2,7 @@ const TodoController = require('../../controllers/todo.controller');
 const TotoModel = require('../../model/todo.model');
 const httpMocks = require('node-mocks-http'); // mock http library
 const newTodo = require('../mock/newTodo');
+const allTodos = require('../mock/allTodos');
 
 TotoModel.create = jest.fn();
 TotoModel.find = jest.fn();
@@ -61,13 +62,28 @@ describe('TodoController.getTodos', () => {
 		TodoController.getTodos(req, res);
 		expect(TotoModel.find).toBeCalled();
 	});
-	
+
 	it("should return 200 response code", async () => {
 		await TodoController.getTodos(req, res);
 		expect(res.statusCode).toBe(200);
 		expect(res._isEndCalled()).toBeTruthy();
 	});
-	
+
+	it("should return json body in response", async () => {
+		TotoModel.find.mockReturnValue(allTodos);
+		await TodoController.getTodos(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._getJSONData()).toStrictEqual(allTodos);
+	});
+
+	it("Should handle error", async () => {
+		const errorMessage = {message: "Error finding docs"};
+		const rejectedPromise = Promise.reject(errorMessage);
+		TotoModel.find.mockReturnValue(rejectedPromise);
+		await TodoController.getTodos(req, res);
+		expect(res.statusCode).toBe(500);
+	})
+
 	
 	
 });
