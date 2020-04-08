@@ -24,31 +24,28 @@ describe("TodoController.createTodo", () => {
 		expect(typeof TodoController.createTodo).toBe("function");
 	});
 	
-	it('should call TodoModel.create', () => {
-		TodoController.createTodo(req, res);
+	it('should call TodoModel.create', async () => {
+		await TodoController.createTodo(req, res);
 		expect(TotoModel.create).toBeCalled();
 	});
 	
-	it("should return 200 response code", () => {
-		TodoController.createTodo(req, res, () => {
-			expect(res.statusCode).toBe(200);
-			expect(res._isEndCalled()).toBeTruthy();
-		});
+	it("should return 200 response code", async () => {
+		await TodoController.createTodo(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._isEndCalled()).toBeTruthy();
 	});
 	
-	it("should return json body in response", () => {
+	it("should return json body in response", async () => {
 		TotoModel.create.mockReturnValue(newTodo);
-		TodoController.createTodo(req, res, () => {
-			expect(res.statusCode).toBe(200);
-			expect(res._getJSONData()).toStrictEqual(newTodo);
-		});
+		await TodoController.createTodo(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._getJSONData()).toStrictEqual(newTodo);
 	});
 	
-	it("Should return with statusCode 500 when parameters are missing", () => {
+	it("Should return with statusCode 500 when parameters are missing", async () => {
 		delete req.body.title;
-		TodoController.createTodo(req, res, () => {
-			expect(res.statusCode).toBe(500);
-		});
+		await TodoController.createTodo(req, res);
+		expect(res.statusCode).toBe(500);
 	})
 	
 });
@@ -61,16 +58,16 @@ describe('TodoController.getTodos', () => {
 	});
 	
 	it('should call TodoModel.find', () => {
-		TodoController.getTodos(req, res, () => {
-			expect(TotoModel.find).toBeCalled();
-		});
+		TodoController.getTodos(req, res);
+		expect(TotoModel.find).toBeCalled();
 	});
 	
-	it("should return 200 response code", () => {
-		TodoController.getTodos(req, res, () => {
-			expect(res.statusCode).toBe(200);
-			expect(res._isEndCalled()).toBeTruthy();
-		});
+	it("should return 200 response code", async () => {
+		await TodoController.getTodos(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._isEndCalled()).toBeTruthy();
 	});
+	
+	
 	
 });
