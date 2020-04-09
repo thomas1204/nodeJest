@@ -1,5 +1,12 @@
 const TodoModel = require('../model/todo.model');
 
+
+/**
+ * Creates a new todo item in DB
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 exports.createTodo = async (req, res) => {
 	try {
 		if (
@@ -18,6 +25,12 @@ exports.createTodo = async (req, res) => {
 	}
 };
 
+/**
+ * Finds and returns all todo items from DB
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 exports.getTodos = async (req, res) => {
 	try {
 		const docs = await TodoModel.find({});
@@ -26,3 +39,22 @@ exports.getTodos = async (req, res) => {
 		res.status(500).send({error: e})
 	}
 };
+
+/**
+ * Find a single todo from DB using todoId
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+exports.getTodoById = async (req, res) => {
+	try {
+		const todoId = req.params.todoId;
+		if (todoId !== undefined && todoId !== "") {
+			await TodoModel.findById(todoId);
+		} else {
+			res.status(500).send({error: 'Todo Id is missing'})
+		}
+	} catch (e) {
+		res.status(500).send({error: e})
+	}
+}
