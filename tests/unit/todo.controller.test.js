@@ -120,6 +120,15 @@ describe('TodoController.getTodoById', () => {
 		await TodoController.getTodoById(req, res);
 		expect(res.statusCode).toBe(500);
 		expect(res._getJSONData()).toStrictEqual({error: 'Todo Id is missing'});
+		expect(res._isEndCalled()).toBeTruthy();
+	})
+	
+	it("Should handle error when todo is not found", async () => {
+		TotoModel.findById.mockReturnValue(null);
+		await TodoController.getTodoById(req, res);
+		expect(res.statusCode).toBe(500);
+		expect(res._getJSONData()).toStrictEqual({error: "Todo item not found"});
+		expect(res._isEndCalled()).toBeTruthy();
 	})
 	
 	it("Should handle error", async () => {
@@ -131,7 +140,6 @@ describe('TodoController.getTodoById', () => {
 		expect(res.statusCode).toBe(500);
 		expect(res._getJSONData()).toStrictEqual({error: message});
 	})
-	
 	
 })
 

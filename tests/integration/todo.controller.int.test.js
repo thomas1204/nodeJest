@@ -4,6 +4,7 @@ const newTodo = require('../mock/newTodo');
 
 
 const endPointUrl = "/todos/"; // APP URL
+let firstTodo;
 
 describe(endPointUrl, () => {
 	
@@ -32,7 +33,13 @@ describe(endPointUrl, () => {
 		expect(response.body[0]._id).toBeDefined();
 		expect(response.body[0].title).toBeDefined();
 		expect(response.body[0].done).toBeDefined();
+		firstTodo = response.body[0];
 	});
 	
+	it(`should return a todo item for given id, ${endPointUrl}`, async () => {
+		const response = await request(app).get(`${endPointUrl}5e43a53ff19a2d14469453d6`);
+		expect(response.statusCode).toBe(500);
+		expect(response.body).toStrictEqual({"error": "Todo item not found"});
+	});
 	
 });
