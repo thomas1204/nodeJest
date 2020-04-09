@@ -107,17 +107,12 @@ describe('TodoController.getTodoById', () => {
 		expect(TotoModel.findById).toBeCalledWith(todoId);
 	});
 	
-	it("should return 200 response code", async () => {
-		await TodoController.getTodoById(req, res);
-		expect(res.statusCode).toBe(200);
-		expect(res._isEndCalled()).toBeTruthy();
-	});
-	
 	it("should return json body in response", async () => {
 		TotoModel.findById.mockReturnValue(todo);
 		await TodoController.getTodoById(req, res);
 		expect(res.statusCode).toBe(200);
 		expect(res._getJSONData()).toStrictEqual(todo);
+		expect(res._isEndCalled()).toBeTruthy();
 	});
 	
 	it("Should handle error when todoId is attached", async () => {
@@ -128,12 +123,13 @@ describe('TodoController.getTodoById', () => {
 	})
 	
 	it("Should handle error", async () => {
-		const errorMessage = {message: "Error finding doc"};
+		const message = "Error finding doc";
+		const errorMessage = {message: message};
 		const rejectedPromise = Promise.reject(errorMessage);
 		TotoModel.findById.mockReturnValue(rejectedPromise);
 		await TodoController.getTodoById(req, res);
 		expect(res.statusCode).toBe(500);
-		expect(res._getJSONData()).toStrictEqual({error: 'Error finding doc'});
+		expect(res._getJSONData()).toStrictEqual({error: message});
 	})
 	
 	
