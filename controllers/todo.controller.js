@@ -18,10 +18,10 @@ exports.createTodo = async (req, res) => {
 			const doc = await TodoModel.create(req.body);
 			res.status(200).json(doc);
 		} else {
-			res.status(500).send({error: 'Some parameters are missing'})
+			res.status(500).json({error: 'Some parameters are missing'})
 		}
 	} catch (e) {
-		res.status(500).send({error: e})
+		res.status(500).json({error: e.message})
 	}
 };
 
@@ -36,7 +36,7 @@ exports.getTodos = async (req, res) => {
 		const docs = await TodoModel.find({});
 		res.status(200).json(docs);
 	} catch (e) {
-		res.status(500).send({error: e})
+		res.status(500).json({error: e.message})
 	}
 };
 
@@ -50,11 +50,12 @@ exports.getTodoById = async (req, res) => {
 	try {
 		const todoId = req.params.todoId;
 		if (todoId !== undefined && todoId !== "") {
-			await TodoModel.findById(todoId);
+			const doc = await TodoModel.findById(todoId);
+			res.status(200).json(doc);
 		} else {
-			res.status(500).send({error: 'Todo Id is missing'})
+			res.status(500).json({error: 'Todo Id is missing'})
 		}
 	} catch (e) {
-		res.status(500).send({error: e})
+		res.status(500).json({error: e.message})
 	}
 }

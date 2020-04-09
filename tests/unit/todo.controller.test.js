@@ -3,6 +3,7 @@ const TotoModel = require('../../model/todo.model');
 const httpMocks = require('node-mocks-http'); // mock http library
 const newTodo = require('../mock/newTodo');
 const allTodos = require('../mock/allTodos');
+const todo = require('../mock/todo.json');
 
 TotoModel.create = jest.fn();
 TotoModel.find = jest.fn();
@@ -83,6 +84,7 @@ describe('TodoController.getTodos', () => {
 		TotoModel.find.mockReturnValue(rejectedPromise);
 		await TodoController.getTodos(req, res);
 		expect(res.statusCode).toBe(500);
+		expect(res._getJSONData()).toStrictEqual({error: 'Error finding docs'});
 	})
 	
 });
@@ -90,15 +92,51 @@ describe('TodoController.getTodos', () => {
 
 describe('TodoController.getTodoById', () => {
 	
+	const todoId = "5e43a53ff19a2d14469b73d6";
+	
+	beforeEach(() => {
+		req.params.todoId = todoId;
+	});
+	
 	it("should have a getTodoById function", () => {
 		expect(typeof TodoController.getTodoById).toBe("function");
 	});
 	
 	it('should call TodoModel.findById', async () => {
-		const todoId = "5e43a53ff19a2d14469b73d6";
-		req.params.todoId = todoId;
 		await TodoController.getTodoById(req, res);
 		expect(TotoModel.findById).toBeCalledWith(todoId);
 	});
 	
+	it("should return 200 response code", async () => {
+		await TodoController.getTodoById(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._isEndCalled()).toBeTruthy();
+	});
+	
+	it("should return json body in response", async () => {
+		TotoModel.findById.mockReturnValue(todo);
+		await TodoController.getTodoById(req, res);
+		expect(res.statusCode).toBe(200);
+		expect(res._getJSONData()).toStrictEqual(todo);
+	});
+	
+	it("Should handle error when todoId is attached", async () => {
+		req.params.todoId = "";
+		await TodoController.getTodoById(req, res);
+		expect(res.statusCode).toBe(500);
+		expect(res._getJSONData()).toStrictEqual({error: 'Todo Id is missing'});
+	})
+	
+	it("Should handle error", async () => {
+		const errorMessage = {message: "Error finding doc"};
+		const rejectedPromise = Promise.reject(errorMessage);
+		TotoModel.findById.mockReturnValue(rejectedPromise);
+		await TodoController.getTodoById(req, res);
+		expect(res.statusCode).toBe(500);
+		expect(res._getJSONData()).toStrictEqual({error: 'Error finding doc'});
+	})
+	
+	
 })
+
+
